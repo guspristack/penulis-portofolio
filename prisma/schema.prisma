@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../server/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Essay {
+  id                Int       @id @default(autoincrement())
+  slug              String    @unique
+  draft             Json
+  revision          Int       @default(1)
+  published         Json?
+  publishedRevision Int?
+  publishedAt       DateTime?
+  updatedAt         DateTime  @updatedAt
+
+  @@index([publishedAt])
+}
+
+model Admin {
+  id           Int    @id
+  email        String @unique
+  passwordHash String
+}
+
+model Session {
+  sid    String   @id @db.VarChar
+  sess   Json     @db.Json
+  expire DateTime @db.Timestamp(6)
+
+  @@index([expire])
+  @@map("session")
+}

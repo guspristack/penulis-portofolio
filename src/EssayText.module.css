@@ -1,0 +1,10 @@
+.prose { min-width: 0; overflow-wrap: anywhere; color: var(--ink); }
+.prose p, .prose li { font-size: 1.15rem; line-height: 1.6; }
+.prose p, .prose ul, .prose ol, .prose blockquote, .prose pre { margin-block: 1em; }
+.prose h2, .prose h3, .prose h4, .prose h5, .prose h6 { font-family: var(--serif); line-height: 1.05; font-weight: 400; margin: .95em 0 .4em; }
+.prose h2 { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+.prose h3 { font-size: 1.65rem; }
+.prose a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.prose blockquote { margin-inline: 0; padding-inline-start: 16px; border-inline-start: 2px solid var(--accent); color: var(--muted); }
+.prose pre { padding: 12px; background: #f3e8da; border: 1px solid var(--rule); overflow: auto; }
+.prose hr { border: 0; border-top: 1px solid var(--rule); }

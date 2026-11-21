@@ -1,0 +1,77 @@
+.headerRow.headerRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  grid-template-areas: "identity navigation gallery";
+  align-items: center;
+  gap: 12px;
+}
+.headerRow.leadingGallery {
+  grid-template-columns: minmax(0, 1fr) auto minmax(max-content, 1fr);
+  grid-template-areas: "gallery identity navigation";
+}
+.identity { grid-area: identity; display: flex; align-items: center; min-width: 0; gap: 8px; }
+.gallery.gallery { grid-area: gallery; justify-self: end; min-height: 44px; }
+.leadingGallery .gallery { justify-self: start; }
+.headerRow .nav { grid-area: navigation; display: flex; align-items: center; gap: clamp(10px, 1.6vw, 21px); }
+.leadingGallery .nav { justify-content: flex-end; }
+.headerRow .nav button {
+  background: transparent; color: inherit; border: 0; padding: 4px 0; min-height: 44px;
+  min-width: 44px; font-size: .89rem; font-weight: 650;
+}
+.headerRow .nav button:last-child { color: var(--accent, var(--focus)); font-weight: 750; }
+.headerRow .nav button:hover, .top:hover { color: var(--accent, var(--focus)); text-decoration: underline; text-underline-offset: 4px; }
+.section {
+  display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1fr); align-items: start;
+  gap: 22px; padding-block: 26px 31px; border-top: 1px solid var(--line, var(--rule, var(--border, currentColor)));
+}
+.section h2 {
+  font-family: var(--display, var(--serif, var(--title, inherit)));
+  font-size: clamp(1.85rem, 3.65vw, 2.85rem); line-height: 1.08; letter-spacing: -.04em;
+  font-weight: var(--profile-heading-weight, 680); scroll-margin-top: 23px;
+}
+.section p { color: var(--muted, inherit); line-height: 1.62; }
+.meta { margin-top: 6px; }
+.facts, .credits { margin: 10px 0 0; }
+.facts > div, .credits > div { display: grid; grid-template-columns: minmax(104px, .42fr) minmax(0, 1.58fr); gap: 4px 9px; }
+.facts dt, .credits dt, .timeline li > span { color: var(--accent, var(--focus)); font-weight: 720; }
+.facts dd, .credits dd { margin: 0; color: var(--muted, inherit); }
+.credits {
+  padding: 11px 13px; display: grid; gap: 6px; line-height: 1.47; font-size: .94rem;
+  border: 1px solid var(--line, var(--rule, var(--border, currentColor)));
+  border-radius: var(--profile-radius, 6px);
+  background: color-mix(in srgb, var(--accent, var(--focus)) 5%, transparent);
+}
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li { display: grid; grid-template-columns: minmax(95px, .36fr) minmax(0, 1fr); gap: 10px; padding-block: 11px; }
+.timeline li:first-child { padding-top: 0; }
+.timeline li + li { border-top: 1px solid var(--line, var(--rule, var(--border, currentColor))); }
+.timeline li > span { font-size: .88rem; }
+.timeline h3 { font-size: 1.03rem; line-height: 1.3; }
+.timeline p { margin-top: 4px; }
+.email {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; max-width: 100%;
+  padding: 6px 10px; color: var(--accent, var(--focus)); font-weight: 740; overflow-wrap: anywhere;
+  border: 1px solid var(--line, var(--rule, var(--border, currentColor)));
+  border-radius: var(--profile-radius, 6px);
+  background: color-mix(in srgb, var(--accent, var(--focus)) 8%, transparent);
+}
+.email:hover { border-color: currentColor; text-decoration: underline; }
+.email svg, .top svg { flex-shrink: 0; }
+.note { margin-top: 5px; font-size: .86rem; }
+.top { display: inline-flex; align-items: center; gap: 5px; padding: 0; background: transparent; border: 0; color: inherit; min-height: 44px; font-size: .87rem; text-align: left; }
+@media (max-width: 780px) {
+  .headerRow.headerRow { grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "identity gallery" "navigation navigation"; gap: 0 9px; padding-top: 4px; }
+  .headerRow.leadingGallery { grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "gallery identity" "navigation navigation"; }
+  .leadingGallery .identity { justify-self: end; }
+  .headerRow .nav { justify-content: space-between; flex-wrap: wrap; gap: 3px; margin-top: 3px; border-top: 1px solid var(--line, var(--rule, var(--border, currentColor))); }
+  .headerRow .nav button { padding-inline: 2px; font-size: .85rem; }
+}
+@media (max-width: 570px) {
+  .section { grid-template-columns: 1fr; gap: 12px; padding-block: 23px 26px; }
+  .credits > div { grid-template-columns: 1fr; gap: 1px; }
+}
+@media (max-width: 370px) {
+  .headerRow .nav button { padding-inline: 1px; }
+  .facts > div { grid-template-columns: 1fr; gap: 2px; }
+  .timeline li { grid-template-columns: minmax(76px, .3fr) minmax(0, 1fr); gap: 8px; }
+}
