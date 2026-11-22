@@ -4,3 +4,6 @@ server/generated/
 .env*
 !.env.example
 *.log
+
+# Private datasets, database exports, and local media
+/.local/

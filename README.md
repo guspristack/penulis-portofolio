@@ -1,43 +1,45 @@
 # Nara Adinata · Portofolio Penulis
 
-Portofolio full-stack dengan desain editorial satu halaman dan studio untuk menulis, menyunting, dan menerbitkan esai. Nara Adinata adalah persona fiktif dari galeri Ruang Karya.
+Proyek portofolio full-stack untuk persona fiktif dari seri Ruang Karya karya GuspriStack.
 
-## Pengelolaan esai
+[Lihat demo desain di GuspriStack Showcase](https://showcase.guspriaman.com/portofolio/editorial/)
 
-- Pemilik masuk ke `/admin` untuk membuat draf, menyunting naskah Markdown, dan melihat pratinjau.
-- **Simpan draf** menyimpan versi kerja. Jika esai sudah terbit, pengunjung masih melihat versi terbit sebelumnya.
-- **Terbitkan esai** atau **Terbitkan revisi** memperbarui versi publik, yang bisa dibuka lewat alamat tetap `/?artikel=slug`.
-- **Tarik publikasi** menghapus tulisan dari akses publik dan menyimpan drafnya di studio.
-- Pengunjung bisa menyaring kategori dan membagikan tautan tulisan tanpa akun.
+## Fitur
 
-Frontend memakai React, Vite, TypeScript, CSS Modules, dan React Markdown. Backend memakai Express, Prisma, dan PostgreSQL. Sesi admin dan kedua versi esai disimpan di PostgreSQL.
+- Portofolio editorial dengan daftar esai dan halaman baca.
+- Editor esai dengan draf, revisi, dan publikasi.
 
-## Menjalankan secara lokal
+## Teknologi
 
-1. Siapkan Node.js 24 dan database PostgreSQL yang dapat dimigrasikan aplikasi.
-2. Salin `.env.example` menjadi `.env`. Isi `DATABASE_URL`, `SESSION_SECRET`, `ADMIN_EMAIL`, dan `ADMIN_PASSWORD`. Gunakan kata sandi unik minimal 16 karakter. Buat rahasia sesi acak dengan perintah berikut.
+| Bagian | Teknologi |
+| --- | --- |
+| Bahasa | TypeScript, HTML, dan CSS |
+| Frontend | React, Vite, dan CSS Modules |
+| Backend | Node.js 24 dan Express |
+| Database | PostgreSQL dan Prisma ORM |
 
-   ```sh
-   node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"
-   ```
+## Coba secara lokal
 
-3. Jalankan instalasi dan persiapan database.
+Siapkan Node.js 24 dan database PostgreSQL lokal. Salin [.env.example](.env.example) ke `.env` dan isi koneksi database, rahasia sesi acak, serta kredensial admin lokal. Gunakan kata sandi admin dengan minimal 16 karakter.
 
-   ```sh
-   npm ci
-   npm run db:migrate
-   npm run db:seed
-   npm run admin:provision
-   npm run dev
-   ```
+```sh
+npm ci
+npm run db:migrate
+npm run db:seed
+npm run admin:provision
+npm run dev
+```
 
-Untuk mode pengembangan, buka [portofolio](http://127.0.0.1:5175/) atau [studio admin](http://127.0.0.1:5175/admin). Perintah `db:seed` menyediakan tiga esai contoh dan melewati slug yang sudah ada. `admin:provision` membuat atau mengganti akun admin serta mengakhiri sesi sebelumnya. Setelah provisioning, kredensial admin dapat dikeluarkan dari konfigurasi runtime.
-
-## Menjalankan hasil build
-
-Untuk hasil build lokal, atur `APP_ORIGIN=http://127.0.0.1:4175`, lalu jalankan `npm run build` dan `npm start`. Express melayani frontend dan API pada origin yang sama. Untuk hosting, gunakan `APP_ORIGIN` sesuai origin HTTPS publik dan sesuaikan `HOST`, `PORT`, serta `TRUST_PROXY_HOPS` dengan konfigurasi layanan.
+Buka [portofolio lokal](http://127.0.0.1:5175/) atau [panel admin](http://127.0.0.1:5175/admin). Simpan konfigurasi asli di `.env` dan data privat seperti ekspor database atau unggahan pribadi di luar repositori atau di folder `.local/`.
 
 ## Kredit
 
-- Pengembangan oleh [guspriaman](https://github.com/guspriaman) untuk [guspriStack](https://github.com/guspristack).
-- Desain editorial, potret generatif, foto sampul, dan tulisan contoh berasal dari prototipe Ruang Karya. Kredit penulisan per esai menggunakan persona fiktif Nara Adinata.
+- Pemilik dan pengembang proyek — [guspriaman](https://guspriaman.com/).
+- Studio pengembang — [GuspriStack](https://github.com/guspristack).
+- Materi contoh dari prototipe Ruang Karya — Desain editorial, potret generatif, foto sampul, dan esai contoh.
+
+## Lisensi
+
+Kode dan materi contoh orisinal milik guspriaman tersedia di bawah [PolyForm Noncommercial License 1.0.0](LICENSE). Anda boleh menggunakan, memodifikasi, dan membagikan materi tersebut untuk tujuan nonkomersial sesuai lisensi, dengan menyertakan [pemberitahuan hak cipta](NOTICE).
+
+Penjualan proyek atau versi modifikasinya, distribusi berbayar, dan penggunaan komersial memerlukan izin tertulis dari guspriaman. Dependensi dan aset pihak ketiga mengikuti lisensinya masing-masing.
